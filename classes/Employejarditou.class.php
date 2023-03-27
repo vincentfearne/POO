@@ -50,6 +50,21 @@ public function Prime()
     echo "Ordre de transfert en date du 30/11 : $extra <br><br>";
 }
 
+public function Chequevacances()
+{
+    $now = new DateTime();
+    $dateinitiale = new DateTime($this->date_embauche);
+    $anciennete = $now->diff($dateinitiale);
+    if ($anciennete->y >1)
+    {
+        echo "$this->prenom $this->nom peut bénéficier de chèques-vacances.";
+    }
+    else
+    {
+        echo "$this->prenom $this->nom ne peut pas bénéficier de chèques-vacances.";
+    }
+}
+
 }
 
 $employe1 = new Employe("CUCU", "Popo", "2015-01-05", "directeur", 12000, "direction", $magasin1);
@@ -68,6 +83,9 @@ $employe4->Anciennete();
 $employe4->Prime();
 $employe5->Anciennete();
 $employe5->Prime();
+
+$employe1->Chequevacances();
+
 
 ?>
 
